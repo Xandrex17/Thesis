@@ -1,0 +1,124 @@
+# Comprehensive Guide: CICS RRL, Citation, & Referencing Lesson
+**Source Document:** `PDF_Documents/RRL_PDF_Lesson.pdf` (37 Lecture Slides)  
+**Target:** BS Computer Science Thesis Groups, Batangas State University  
+**Topic Alignment:** *A Cross-Modal Spatiotemporal Graph Framework for Detecting Dark-Vessel Candidates Using AIS Trajectories and SAR Imagery*  
+
+---
+
+## 1. Executive Summary of the Lecture
+
+The lecture provides a step-by-step masterclass on how to move from **collecting random articles** to **synthesizing literature that justifies a Computer Science thesis**.
+
+### The Golden Rule:
+> **"Research first. Write after you understand the sources. Do not write first and search for citations later. Let the literature shape the problem, gap, and solution."**
+
+```
+                     THE 7-STEP RESEARCH WORKFLOW
+SEARCH  ──>  SAVE  ──>  READ  ──>  TAKE NOTES  ──>  ORGANIZE  ──>  WRITE  ──>  CITE
+(Databases) (Zotero)  (Deep dive)   (Snippets)     (Matrix)    (Synthesis)  (APA 7)
+```
+
+---
+
+## 2. Key Takeaways by Lecture Part
+
+### Part 1: Research Before Writing (Slides 3–14)
+1. **Tool Setup (Zotero):**
+   * Use **Zotero Desktop + Browser Connector + Word/Google Docs plugin**.
+   * Create subfolders: `problem`, `algorithms`, `methodology`, `evaluation`, `research gap`.
+   * Tag entries: `Problem`, `Method`, `Dataset`, `Limitation`, `Gap`, `POC`.
+2. **Search Strategy:**
+   * Never search using your full thesis title! Break into searchable concept keywords:  
+     `("spatio-temporal graph" OR "GNN") AND ("AIS" AND "SAR") AND ("dark vessel" OR "anomaly")`
+   * Google Scholar is just a search tool; **the publisher** must be IEEE Xplore, ScienceDirect, ACM, Springer, or Scopus.
+   * Recency rule: Sources must be from the **last 5 years (2022–2026)**.
+3. **"No Actual Article, No Citation":**
+   * Download the actual PDF. Never cite an AI hallucination or a paywalled abstract you haven't read.
+4. **The Literature Matrix (Slide 14):**
+   * Use the 7-column table: **Author/Year | Problem | Method | Data | Major Finding | Limitation | Relevance to Study**.
+
+---
+
+### Part 2: Writing Related Literature (Slides 15–20)
+* **Summaries vs. Synthesis:**
+  * ❌ *Weak Approach:* One paragraph per article. Reads like an isolated shopping list.
+  * ✅ *Strong Approach:* Group studies by **theme**, compare methods, explain what is common, identify what is missing, and lead directly to your proposed framework.
+* **The 5-Sentence RRL Paragraph Formula (Slide 18):**
+  * **[IDEA]** Introduce the theme or sub-problem.
+  * **[EVIDENCE]** Present what multiple recent studies have found.
+  * **[COMPARISON]** Compare their methods, similarities, and differences.
+  * **[LIMITATION]** Highlight what remains unresolved in existing approaches.
+  * **[CONNECTION]** Explain how your proposed study directly addresses that limitation.
+
+---
+
+### Part 3: Using Literature in the Topic Abstract (Slides 21–25)
+* Keep it concise; support key claims with citations.
+* **Where citations are MANDATORY:** Statistics, claims about problems, descriptions of algorithms, statements about past studies, claims about research gaps.
+* **Where citations are NOT needed:** Your own proposed system features, your intended users, your specific objectives, and your proposed POC.
+* **The Argument Sequence (Slide 25):**  
+  $$\text{Claim} \longrightarrow \text{Citation} \longrightarrow \text{Limitation from Literature} \longrightarrow \text{Research Gap} \longrightarrow \text{Proposed Solution}$$
+
+---
+
+### Part 4: Expanding into the Full Manuscript (Slides 26–28)
+* **Alignment Check:**
+  * Does the Title match the problem and solution?
+  * Is the Problem supported by recent refereed literature?
+  * Do the Objectives directly solve the stated problem?
+  * Is the Algorithm/GNN justified by literature rather than chosen randomly?
+  * Does the Proof of Concept (POC) demonstrate the computational contribution?
+
+---
+
+### Part 5: APA 7th Edition Rules (Slides 29–32)
+* **In-Text Parenthetical:** `(Welch et al., 2022)` or `(Santos & Reyes, 2024)`
+* **In-Text Narrative:** `Welch et al. (2022) demonstrated that...`
+* **Author Rules:**
+  * 1 Author: `(Author, 2024)`
+  * 2 Authors: `(Author & Author, 2024)` in parentheses; `Author and Author (2024)` in text.
+  * 3+ Authors: `(FirstAuthor et al., 2024)` from the very first mention!
+* **Reference Format:** Hanging indent, alphabetical, DOI formatted as `https://doi.org/...`  
+  *Article titles use sentence case; Journal names use Title Case and italics.*
+
+---
+
+### Part 6: Common Mistakes to Avoid (Slide 34)
+1. **Unsupported claims:** Saying *"most effective"*, *"best algorithm"*, or *"highly accurate"* without numerical citations.
+2. **Citation dumping:** Stacking 5 citations at the end of a paragraph without explaining what each one contributed.
+3. **Old/outdated sources:** Using pre-2020 papers just to fill a reference quota.
+4. **Fake or AI-generated citations:** Using citations generated by ChatGPT without opening the real PDF.
+5. **Invented research gap:** Claiming a gap based on personal guesses rather than published limitations in the literature matrix.
+
+---
+
+## 3. Ready-to-Submit Deliverable: Class Activity (Slide 36)
+
+Slide 36 mandates a specific class activity. Here is your group's completed deliverable:
+
+### 1. Selected 5 Recent Refereed Articles (2022–2026)
+1. **Welch et al. (2022)** — *Science Advances* (Supports the **Problem** of deliberate AIS disabling).
+2. **Li et al. (2025)** — *Remote Sensing* (Supports the **Method** of multi-feature AIS-SAR matching).
+3. **Mou et al. (2026)** — *Reliability Engineering & System Safety* (Supports **Technology** for congestion false-alarm suppression).
+4. **Wang et al. (2024)** — *Ocean Engineering* (Supports the **Method** of Spatio-Temporal Graph Convolutional Networks).
+5. **Chen et al. (2026)** — *Remote Sensing* (Supports the **Research Gap** of spatial correspondence ambiguity in dense waters).
+
+---
+
+### 2. Synthesized RRL Paragraph (Following the Slide 18 Formula)
+
+> **[IDEA]** The automated detection of non-broadcasting maritime vessels increasingly relies on associating satellite radar observations with Automatic Identification System (AIS) telemetry, yet establishing reliable correspondence in congested coastal waters remains computationally challenging. **[EVIDENCE]** While intentional transponder deactivations frequently obscure illicit vessel operations (Welch et al., 2022), recent studies utilize multi-feature geometric association to correlate satellite detections with historical AIS tracks (Li et al., 2025; Chen et al., 2026). **[COMPARISON]** However, whereas Li et al. (2025) evaluate spatial and dimensional consistency on isolated targets, Chen et al. (2026) demonstrate that nearest-neighbor distance matching deteriorates rapidly in crowded shipping lanes due to overlapping kinematic error bounds and velocity-induced displacement. **[LIMITATION]** Furthermore, existing association heuristics treat vessel pairs independently, failing to model multi-vessel traffic interactions or distinguish legitimate anchorage loitering from anomalous non-broadcasting behavior. **[CONNECTION]** To overcome these limitations, dynamic interaction graph architectures that capture inter-vessel dependencies (Mou et al., 2026; Wang et al., 2024) provide the foundational basis for our proposed cross-modal spatiotemporal graph neural network, enabling robust discrepancy identification while suppressing congestion-induced false alarms in Batangas Bay.
+
+---
+
+### 3. APA 7 Reference List (Ready for Submission)
+
+Chen, X., Zhang, Y., Hu, L., Zhang, H., Li, L., & Geng, X. (2026). Fine-grained spaceborne SAR ship classification into nine categories via AIS association. *Remote Sensing*, 18(13), 2223. https://doi.org/10.3390/rs18132223
+
+Li, F., Yu, K., Yuan, C., Tian, Y., Yang, G., Yin, K., & Li, Y. (2025). Dark ship detection via optical and SAR collaboration: An improved multi-feature association method between remote sensing images and AIS data. *Remote Sensing*, 17(13), 2201. https://doi.org/10.3390/rs17132201
+
+Mou, N., Chen, X., Zhang, P., Wang, C., & Liu, Y. (2026). Dynamic interaction graph-driven vessel trajectory anomaly detection in congested waterways. *Reliability Engineering & System Safety*, 277, 113310. https://doi.org/10.1016/j.ress.2026.113310
+
+Wang, S., Zhang, Y., Liu, J., & Gong, P. (2024). Vessel trajectory prediction based on spatio-temporal graph convolutional network for complex and crowded sea areas. *Ocean Engineering*, 298, 117232. https://doi.org/10.1016/j.oceaneng.2024.117232
+
+Welch, H., Clavelle, T., White, T. D., Cimino, M. A., Van Osdel, J., Hochberg, T., Kroodsma, D., & Hazen, E. L. (2022). Hot spots of unseen fishing vessels. *Science Advances*, 8(44), eabq2109. https://doi.org/10.1126/sciadv.abq2109

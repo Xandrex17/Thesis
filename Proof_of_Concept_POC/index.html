@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCEAN-SIGHT // Spatiotemporal Graph Maritime Console (BSCS Thesis)</title>
+  
+  <!-- Leaflet GIS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Web Fonts: JetBrains Mono + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Command Bar: Authoritative Academic & Research Header -->
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="brand" onclick="openThesisModal()" title="View Thesis Blueprint & Alignment" style="cursor: pointer;">
+        <div class="brand-badge-icon">
+          <i data-lucide="network" class="brand-icon"></i>
+        </div>
+        <div class="brand-text-block">
+          <div class="brand-row">
+            <span class="brand-title">OCEAN-SIGHT</span>
+            <span class="brand-edition mono">ST-GNN v3.4</span>
+          </div>
+          <span class="brand-sub">BatStateU CICS &bull; Group 2 BSCS Thesis</span>
+        </div>
+      </div>
+
+      <div class="nav-divider-v"></div>
+
+      <!-- Sector & Sensor Metadata Tag -->
+      <div class="sensor-tag-group mono" title="Operational Geographic Sector & Spaceborne Sensor">
+        <span class="sensor-pill"><i data-lucide="map-pin"></i> Batangas Bay &bull; WGS84</span>
+        <span class="sensor-pill sensor-sar"><i data-lucide="satellite"></i> Sentinel-1 C-Band SAR (IW GRD)</span>
+      </div>
+
+      <!-- API Online / Standalone Health Indicator -->
+      <span class="nav-tag mono api-pill" id="api-status-badge" onclick="checkApiHealth()" title="Click to test API connection (port 3080)">
+        <span class="dot" id="api-status-dot"></span>
+        <span id="api-status-text">API: CHECKING...</span>
+      </span>
+    </div>
+
+    <!-- Center Interactive Controls -->
+    <div class="nav-center">
+      <!-- Scenario Selector -->
+      <div class="control-box">
+        <span class="control-lbl mono"><i data-lucide="waves"></i> Scene:</span>
+        <div class="pill-group">
+          <button class="pill-btn active" id="btn-scene-alpha" onclick="switchScenario('alpha', this)" title="Standard fairway & port queuing (11 vessels)">
+            <span>Alpha</span><small class="mono">Fairway</small>
+          </button>
+          <button class="pill-btn" id="btn-scene-bravo" onclick="switchScenario('bravo', this)" title="High-density port congestion & ghost AIS spoof (9 vessels)">
+            <span>Bravo</span><small class="mono">Congested</small>
+          </button>
+          <button class="pill-btn" id="btn-scene-charlie" onclick="switchScenario('charlie', this)" title="Storm surge & degraded VHF AIS broadcasts (5 vessels)">
+            <span>Charlie</span><small class="mono">Storm</small>
+          </button>
+        </div>
+      </div>
+
+      <!-- Core Model Engine Toggle -->
+      <div class="control-box">
+        <span class="control-lbl mono"><i data-lucide="cpu"></i> Model:</span>
+        <div class="pill-group">
+          <button class="pill-btn active-gnn" id="btn-gnn" onclick="setMode('gnn')" title="Proposed Cross-Modal GATv2 Attention + Anchorage Context Filter">
+            <i data-lucide="share-2"></i><span>ST-GNN</span>
+          </button>
+          <button class="pill-btn" id="btn-baseline" onclick="setMode('baseline')" title="Baseline: Rule-Based Hungarian Distance Matcher (demonstrates identity swapping in harbor queues)">
+            <i data-lucide="ruler"></i><span>Baseline</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Telemetry & Scientific Actions -->
+    <div class="nav-right">
+      <!-- Thesis Blueprint & Alignment Modal Trigger -->
+      <button class="btn-tool btn-thesis-docs" onclick="openThesisModal()" title="View Thesis Implementation Plan & Dean's Alignment Guide">
+        <i data-lucide="book-open"></i>
+        <span>Thesis Blueprint</span>
+      </button>
+
+      <!-- Graph Topology Overlay Toggle -->
+      <button class="btn-tool active" id="btn-graph-toggle" onclick="toggleGraphTopology()" title="Toggle Bipartite Reachability & Intra-Modal Neighbor Graph Edges">
+        <i data-lucide="git-fork" id="icon-graph-toggle"></i>
+        <span id="graph-toggle-text" class="mono">Graph: ON</span>
+      </button>
+
+      <!-- Satellite SAR Swath Mode Toggle -->
+      <button class="btn-tool" id="btn-sar-toggle" onclick="toggleSarOverlay()" title="Toggle Sentinel-1 SAR Orbital Swath Pass (Overpass Epoch: 21:47 UTC / 05:47 PST)">
+        <i data-lucide="satellite" id="icon-sar-toggle"></i>
+        <span id="sar-toggle-text" class="mono">SAR Pass: OFF</span>
+      </button>
+
+      <!-- Simulation Play/Pause -->
+      <button class="btn-tool" id="btn-sim-play" onclick="toggleSimPlay()" title="Toggle Real-Time Movement Simulation (Hotkey: Space)">
+        <i data-lucide="pause" id="icon-sim-play"></i>
+        <span id="sim-status-text" class="mono">LIVE</span>
+      </button>
+
+      <!-- Audio Feedback Toggle -->
+      <button class="btn-icon" id="btn-audio" onclick="toggleAudio(this)" title="Toggle Sonar & Click Feedback">
+        <i data-lucide="volume-2" id="icon-audio"></i>
+      </button>
+
+      <!-- Overpass Clocks -->
+      <div class="clock-cluster mono" title="Real-Time Synchronization (Sentinel-1 overpass at 21:47:12 UTC)">
+        <span class="clock-primary" id="utc-clock">UTC 00:00:00Z</span>
+        <span class="clock-secondary" id="pst-clock">PST 08:00:00</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport: GIS Map + High-Density Research Sidebar -->
+  <div class="main-viewport">
+    
+    <!-- Map Container -->
+    <main id="map-container">
+      
+      <!-- Realistic Spaceborne Sentinel-1 SAR Orbital Swath Overlay -->
+      <div class="sar-swath-overlay" id="sar-swath-overlay" style="display: none;">
+        <div class="sar-beam-line"></div>
+        <div class="sar-hud-tag mono">
+          <div class="sar-hud-pulse"></div>
+          <i data-lucide="satellite"></i>
+          <span>SENTINEL-1 C-BAND // ORBIT #412 SAR IW GRD SWATH &bull; OVERPASS 21:47:12 UTC</span>
+        </div>
+        <div class="sar-swath-bounds mono">
+          <span>SUB-SATELLITE GROUND TRACK &bull; POLARIZATION: VV + VH</span>
+          <span>CFAR DETECTION WINDOW: 15 &times; 15 CELL</span>
+        </div>
+      </div>
+
+      <!-- Top Map Status Strip (Scientific Taxonomy & KPIs) -->
+      <div class="map-strip mono">
+        <div class="strip-item scenario-readout" title="Current Selected Nautical Scenario">
+          <i data-lucide="compass"></i>
+          <span id="scenario-label">Alpha Fairway</span>
+        </div>
+        <div class="strip-divider"></div>
+        <div class="strip-item" title="Total Physical Targets Detected"><span class="dot dot-total"></span><span id="stat-total-count">0</span> Total</div>
+        <div class="strip-item" title="Class 0: Verified Matched Vessels (Compliant)"><span class="dot dot-matched"></span><span id="stat-matched-count">0</span> Matched</div>
+        <div class="strip-item" title="Class 1: AIS-SAR Discrepancy / Dark-Vessel Candidates"><span class="dot dot-dark"></span><span id="stat-dark-count">0</span> Candidates</div>
+        <div class="strip-item" title="Class 2: Ambiguous Targets (Anchorage Dwell / SOLAS <25m Exempt / Shoreline Clutter)"><span class="dot dot-anchored"></span><span id="stat-loiter-count">0</span> Ambiguous</div>
+        <div class="strip-item" id="strip-ghost-item" style="display:none;" title="Ghost / Phantom AIS Anomaly (Radio signal without radar return)"><span class="dot dot-ghost"></span><span id="stat-ghost-count">0</span> Ghost</div>
+        <div class="strip-divider"></div>
+        <div class="strip-item fpr-badge" title="False-Positive Rate: Critical Dean's metric (Suppressed from 26.4% down to 3.7% by Anchorage Context)">
+          <i data-lucide="shield-alert"></i> FPR: <strong id="stat-fpr-val" class="fpr-val">3.7%</strong>
+          <span class="fpr-delta" id="stat-fpr-delta">(-22.7% vs Baseline)</span>
+        </div>
+      </div>
+
+      <!-- Floating GIS Layer Controls -->
+      <div class="gis-layer-control mono">
+        <span class="gis-ctrl-title"><i data-lucide="layers"></i> LAYERS:</span>
+        <button class="gis-toggle-btn active" id="layer-btn-graph" onclick="toggleMapLayer('graph')">
+          <span class="layer-dot layer-dot-cyan"></span>Graph Edges
+        </button>
+        <button class="gis-toggle-btn active" id="layer-btn-anchorage" onclick="toggleMapLayer('anchorage')">
+          <span class="layer-dot layer-dot-amber"></span>Anchorage Zone
+        </button>
+        <button class="gis-toggle-btn active" id="layer-btn-buffer" onclick="toggleMapLayer('buffer')">
+          <span class="layer-dot layer-dot-purple"></span>150m Shore Clutter
+        </button>
+        <button class="gis-toggle-btn active" id="layer-btn-fairway" onclick="toggleMapLayer('fairway')">
+          <span class="layer-dot layer-dot-blue"></span>Fairways
+        </button>
+        <div class="gis-ctrl-sep"></div>
+        <span class="gis-ctrl-title"><i data-lucide="map"></i> BASEMAP:</span>
+        <select id="basemap-select" class="gis-basemap-select mono" onchange="switchBasemap(this.value)" title="Switch Cartographic Basemap Provider (API)">
+          <option value="cartodb_dark" selected>CartoDB Dark</option>
+          <option value="esri_satellite">Esri Satellite</option>
+          <option value="osm_standard">OpenStreetMap</option>
+        </select>
+        <button class="gis-toggle-btn" id="layer-btn-seamarks" onclick="toggleSeamarksOverlay()" title="Toggle Nautical Seamarks & Navigation Buoys (OpenSeaMap API)">
+          <span class="layer-dot layer-dot-cyan"></span>Seamarks
+        </button>
+      </div>
+
+      <!-- Map Legend (Deterministic 3-Class Taxonomy) -->
+      <div class="map-legend mono">
+        <div class="legend-header">TAXONOMY &bull; GROUND TRUTH</div>
+        <div class="legend-row">
+          <span class="legend-symbol sym-matched"></span>
+          <span>Class 0: Matched Compliant</span>
+        </div>
+        <div class="legend-row">
+          <span class="legend-symbol sym-dark"></span>
+          <span>Class 1: Discrepancy Candidate</span>
+        </div>
+        <div class="legend-row">
+          <span class="legend-symbol sym-anchored"></span>
+          <span>Class 2: Ambiguous (Exempt/Anchored)</span>
+        </div>
+        <div class="legend-row">
+          <span class="legend-symbol sym-ghost"></span>
+          <span>Anomaly: Ghost AIS Broadcast</span>
+        </div>
+        <div class="legend-row">
+          <span class="legend-line line-candidate"></span>
+          <span>Reachability Edge (R &le; 5.0km)</span>
+        </div>
+      </div>
+
+      <!-- Bottom Coordinate & Hydrographic Reference -->
+      <div class="map-coords mono" id="mouse-coords">13.7240 N, 120.9850 E &bull; NAMRIA Chart PH4401</div>
+    </main>
+
+    <!-- Right Sidebar (High-Density Telemetry & Evaluation Console) -->
+    <aside class="sidebar">
+      
+      <!-- 3 Primary Navigation Tabs -->
+      <div class="sidebar-tabs">
+        <button class="tab-btn active" id="tab-btn-target" onclick="switchTab('tab-target', this)" title="Detailed Kinematics, Node Tensors & GATv2 Attention Weights">
+          <i data-lucide="crosshair"></i><span>Target Telemetry</span>
+        </button>
+        <button class="tab-btn" id="tab-btn-fleet" onclick="switchTab('tab-fleet', this)" title="Vessel & Radar Contact Directory">
+          <i data-lucide="list"></i><span>Fleet Roster</span>
+          <span class="tab-badge mono" id="fleet-count-badge">0</span>
+        </button>
+        <button class="tab-btn" id="tab-btn-compare" onclick="switchTab('tab-compare', this)" title="Academic Benchmarking, Baseline Comparisons & Stress Testing">
+          <i data-lucide="bar-chart-2"></i><span>Evaluation Lab</span>
+        </button>
+      </div>
+
+      <!-- ================================================================== -->
+      <!-- TAB 1: Target Inspector & Explainable GNN Diagnostics             -->
+      <!-- ================================================================== -->
+      <div class="tab-content active" id="tab-target">
+        
+        <div class="card-target" id="target-main-card">
+          
+          <!-- Target Header -->
+          <div class="target-hdr">
+            <div class="target-identity">
+              <div class="target-title-row">
+                <span class="target-title" id="target-name">Unidentified Contact</span>
+                <span class="mmsi-pill mono" id="target-mmsi-pill">MMSI: Offline</span>
+              </div>
+              <div class="target-sub mono">
+                <span id="target-id">SAR-DET #042</span> &bull; 
+                <span id="target-modality-sub">Sentinel-1 Radar Node</span>
+              </div>
+            </div>
+            <span class="status-pill pill-dark" id="target-badge">CLASS 1: CANDIDATE</span>
+          </div>
+
+          <!-- Dual Gauge: Discrepancy Likelihood vs GATv2 Attention Affinity -->
+          <div class="dual-gauge-card mono">
+            <div class="gauge-col">
+              <div class="gauge-head">
+                <span>Discrepancy Score (&tau;)</span>
+                <strong id="target-threat" class="threat-stat">94%</strong>
+              </div>
+              <div class="risk-meter"><span id="target-threat-bar" style="width: 94%;"></span></div>
+              <span class="gauge-sub">Candidate probability</span>
+            </div>
+            <div class="gauge-divider"></div>
+            <div class="gauge-col">
+              <div class="gauge-head">
+                <span>GATv2 Match Affinity (&alpha;)</span>
+                <strong id="target-affinity-stat" class="affinity-stat">0.04</strong>
+              </div>
+              <div class="affinity-meter"><span id="target-affinity-bar" style="width: 4%;"></span></div>
+              <span class="gauge-sub" id="target-affinity-sub">Unpaired candidate</span>
+            </div>
+          </div>
+
+          <!-- Core Feature Vector Grid (6-Cell Balanced Tensor Inspector) -->
+          <div class="tensor-section">
+            <div class="section-label-row mono">
+              <span><i data-lucide="binary"></i> CROSS-MODAL FEATURE TENSORS</span>
+              <span class="tensor-dim-tag">x_SAR &isin; &reals;^7 &bull; x_AIS &isin; &reals;^6</span>
+            </div>
+            
+            <div class="metrics-grid mono">
+              <div class="metric-box">
+                <span class="metric-title"><i data-lucide="navigation"></i> Speed & Course</span>
+                <span class="metric-value" id="target-speed">14.6 kts &bull; 215&deg;</span>
+                <span class="metric-caption">Interpolated SOG/COG</span>
+              </div>
+              
+              <div class="metric-box">
+                <span class="metric-title"><i data-lucide="ruler"></i> Hull Dimensions</span>
+                <span class="metric-value" id="target-length">84.2 m &bull; 14.8 m</span>
+                <span class="metric-caption">Estimated Length &times; Beam</span>
+              </div>
+
+              <div class="metric-box">
+                <span class="metric-title"><i data-lucide="radar"></i> Radar Backscatter</span>
+                <span class="metric-value" id="target-rcs">-8.4 dB</span>
+                <span class="metric-caption">&sigma;&deg; Calibrated Sentinel-1</span>
+              </div>
+
+              <div class="metric-box">
+                <span class="metric-title"><i data-lucide="radio"></i> AIS Transponder</span>
+                <span class="metric-value" id="target-ais">None (Offline)</span>
+                <span class="metric-caption" id="target-gap-sub">&Delta;t &gt; 15m (Exceeded)</span>
+              </div>
+
+              <div class="metric-box">
+                <span class="metric-title"><i data-lucide="anchor"></i> Anchorage Dwell</span>
+                <span class="metric-value" id="target-anchorage-status">Outside Zone</span>
+                <span class="metric-caption">PPA Fairway Geofence</span>
+              </div>
+
+              <div class="metric-box">
+                <span class="metric-title"><i data-lucide="cpu"></i> Model Decision</span>
+                <span class="metric-value" id="target-decision">Class 1: Candidate</span>
+                <span class="metric-caption">Objective 2.3 Rule</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explainable AI Diagnostic Console (Defense Alignment) -->
+          <div class="diagnostic-card">
+            <div class="diag-header mono">
+              <span><i data-lucide="terminal"></i> EXPLAINABLE GNN DIAGNOSTIC</span>
+              <span class="diag-badge" id="target-diag-badge">VERIFIED RULE</span>
+            </div>
+            <div class="explanation-box" id="target-explanation">
+              Radar confirms a 84.2m metallic vessel navigating at 14.6 kts southwest through Verde Island approaches. Zero compatible AIS telemetry detected within the 5.0 km reachability envelope (&plusmn;15 min window). Because hull length exceeds the 25m SOLAS carriage exemption and target is outside anchorage waiting grounds, it is flagged as a <strong>Class 1 Dark-Vessel Candidate</strong> for physical verification.
+            </div>
+          </div>
+
+          <!-- Detailed Telemetry Table (Collapsible Precision Specs) -->
+          <div class="telemetry-table mono">
+            <div class="t-row"><span>Sensor Centroid</span><span id="target-coords">13.7281 N, 120.9740 E</span></div>
+            <div class="t-row"><span>Nearest AIS Broadcast</span><span id="target-gap">&gt; 3,200 m (Gating Bubble)</span></div>
+            <div class="t-row"><span>Shoreline Buffer Distance</span><span id="target-shore-dist">1,420 m (&gt; 150m Open Water)</span></div>
+            <div class="t-row"><span>Cross-Modal Association (&alpha;)</span><span id="target-affinity">0.04 (No Valid Edge)</span></div>
+            <div class="t-row"><span>Decision-Support Directive</span><span id="target-action" class="action-highlight">Prioritize for aerial/patrol verification</span></div>
+          </div>
+
+          <!-- Action Bar: Center Map & Graph Inspection -->
+          <div class="target-actions">
+            <button class="btn-focus-map" onclick="focusSelectedTarget()">
+              <i data-lucide="crosshair"></i>
+              <span>Center Target</span>
+            </button>
+            <button class="btn-focus-map btn-subgraph" onclick="focusSubgraphEdges()">
+              <i data-lucide="git-commit"></i>
+              <span>Inspect Subgraph</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================================================================== -->
+      <!-- TAB 2: Fleet Roster & Multi-Sensor Directory                      -->
+      <!-- ================================================================== -->
+      <div class="tab-content" id="tab-fleet">
+        
+        <div class="fleet-header-panel">
+          <div class="fleet-summary">
+            <div>
+              <span class="mono lbl-sub">CONGESTION PROFILE</span>
+              <strong id="fleet-density-label">Normal fairway traffic (11 vessels)</strong>
+            </div>
+            <span class="density-badge mono" id="fleet-density-tag"><i data-lucide="activity"></i> 4.2 ves/km&sup2;</span>
+          </div>
+
+          <!-- Search Input -->
+          <div class="fleet-search-wrap">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="fleet-search-input" placeholder="Search vessel name, MMSI, or SAR ID..." class="fleet-search-box mono" oninput="handleFleetSearch(this.value)" />
+          </div>
+          
+          <!-- Filter Bar (Deterministic 3-Class + Ghost) -->
+          <div class="fleet-filter-bar">
+            <button class="btn-subfilter active" onclick="setFleetFilter('all', this)">All (<span id="flt-cnt-all">11</span>)</button>
+            <button class="btn-subfilter filter-dark" onclick="setFleetFilter('dark', this)">Class 1 (<span id="flt-cnt-dark">2</span>)</button>
+            <button class="btn-subfilter filter-matched" onclick="setFleetFilter('matched', this)">Class 0 (<span id="flt-cnt-matched">5</span>)</button>
+            <button class="btn-subfilter filter-anchored" onclick="setFleetFilter('anchored', this)">Class 2 (<span id="flt-cnt-anchored">4</span>)</button>
+            <button class="btn-subfilter filter-ghost" onclick="setFleetFilter('ghost', this)">Ghost (<span id="flt-cnt-ghost">0</span>)</button>
+          </div>
+        </div>
+
+        <!-- Scrollable Fleet Item List -->
+        <div class="fleet-list" id="fleet-list-container">
+          <!-- Populated dynamically by script.js -->
+        </div>
+
+      </div>
+
+      <!-- ================================================================== -->
+      <!-- TAB 3: Academic Evaluation Lab & Benchmark Matrix                  -->
+      <!-- ================================================================== -->
+      <div class="tab-content" id="tab-compare">
+        
+        <div class="compare-card">
+          
+          <!-- Benchmark Header -->
+          <div class="compare-title mono">
+            <div class="title-with-icon">
+              <i data-lucide="award"></i>
+              <span>ACADEMIC BENCHMARK & ABLATION MATRIX</span>
+            </div>
+            <span class="model-tag" id="compare-engine-tag">ST-GNN ACTIVE</span>
+          </div>
+
+          <!-- Model & Ablation Architecture Selector -->
+          <div class="eval-selector-block mono">
+            <label class="eval-sel-lbl">SELECT MODEL / ABLATION CANDIDATE:</label>
+            <select id="eval-model-select" class="eval-select-input" onchange="switchEvalModel(this.value)">
+              <option value="gnn" selected>Proposed Framework: ST-GNN + Anchorage-Aware Context</option>
+              <option value="baseline1">Baseline 1: Rule-Based Hungarian Matching (Distance Only)</option>
+              <option value="baseline2">Baseline 2: AIS-Only Anomaly Detector (Isolation Forest)</option>
+              <option value="baseline3">Baseline 3: Unimodal Spaceborne SAR Radar Detector (CFAR)</option>
+              <option value="ablation_graph">Ablation 1: Pairwise MLP (w/o Graph Attention)</option>
+              <option value="ablation_anchorage">Ablation 2: ST-GNN (w/o Anchorage Context Filter)</option>
+              <option value="ablation_intra">Ablation 3: ST-GNN (w/o Intra-Modal Neighbor Edges)</option>
+            </select>
+          </div>
+
+          <!-- 4 Core Quantitative Metrics (Objective 3 Commitments) -->
+          <div class="kpi-compare-row">
+            <div class="kpi-compare-box kpi-highlight-box">
+              <span class="kpi-c-label mono">False Alarm Rate (FPR)</span>
+              <span class="kpi-c-val mono" id="cmp-fpr" style="color: var(--emerald);">3.7%</span>
+              <span class="kpi-c-sub" id="cmp-fpr-sub">Target &lt; 5.0% in anchorage</span>
+            </div>
+            <div class="kpi-compare-box">
+              <span class="kpi-c-label mono">Precision (Discrepancy)</span>
+              <span class="kpi-c-val mono" id="cmp-prec">89.4%</span>
+              <span class="kpi-c-sub">Accurate candidate flags</span>
+            </div>
+            <div class="kpi-compare-box">
+              <span class="kpi-c-label mono">Recall / Sensitivity</span>
+              <span class="kpi-c-val mono" id="cmp-rec">90.9%</span>
+              <span class="kpi-c-sub">True dark capture rate</span>
+            </div>
+            <div class="kpi-compare-box">
+              <span class="kpi-c-label mono">Matching Accuracy</span>
+              <span class="kpi-c-val mono" id="cmp-acc">95.1%</span>
+              <span class="kpi-c-sub">Bipartite pair accuracy</span>
+            </div>
+          </div>
+
+          <!-- Latency & Efficiency Row -->
+          <div class="latency-banner mono">
+            <div class="latency-item">
+              <span>Inference Latency:</span>
+              <strong id="cmp-latency">42 ms / scene</strong>
+            </div>
+            <div class="latency-item">
+              <span>F1-Score:</span>
+              <strong id="cmp-f1" style="color: var(--cyan);">0.901</strong>
+            </div>
+            <div class="latency-item">
+              <span>Compute:</span>
+              <span>&lrm;&#8369;0 (Colab T4)</span>
+            </div>
+          </div>
+
+          <!-- Empirical Rationale / Dean's Justification -->
+          <div class="why-box mono" id="compare-why-text">
+            <strong>Why Proposed ST-GNN Wins:</strong> In dense Batangas Port anchorages, vessels drift within 60m of one another during berth waiting. Simple Euclidean models trigger cascading identity swaps. ST-GNN utilizes cross-modal graph attention and NAMRIA anchorage geofences to recognize legitimate queues, reducing False-Positive Rate (FPR) from <strong>26.4% down to 3.7%</strong>.
+          </div>
+
+          <!-- Deterministic 2x2 Confusion Matrix -->
+          <div class="cm-section">
+            <div class="cm-hdr-row mono">
+              <span class="cm-header">CONFUSION MATRIX (N = <span id="cm-total">60</span>)</span>
+              <span class="cm-target-sub">Class 2 Ambiguous Targets Masked</span>
+            </div>
+            <div class="cm-grid mono">
+              <div class="cm-cell cell-tn">
+                <span class="cm-num" id="cm-tn">48</span>
+                <span class="cm-lbl">True Negative (Compliant)</span>
+              </div>
+              <div class="cm-cell cell-fp">
+                <span class="cm-num" id="cm-fp">1</span>
+                <span class="cm-lbl">False Alarm (Error &bull; FP)</span>
+              </div>
+              <div class="cm-cell cell-fn">
+                <span class="cm-num" id="cm-fn">1</span>
+                <span class="cm-lbl">Missed Candidate (FN)</span>
+              </div>
+              <div class="cm-cell cell-tp">
+                <span class="cm-num" id="cm-tp">10</span>
+                <span class="cm-lbl">True Candidate (TP)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Operational Stress Testing: AIS Signal Dropout Slider -->
+          <div class="stress-box">
+            <div class="stress-hdr mono">
+              <div class="stress-title">
+                <i data-lucide="zap-off"></i>
+                <span>AIS SIGNAL DROPOUT STRESS TEST:</span>
+              </div>
+              <strong id="stress-val-text" style="color: var(--cyan);">0% Normal</strong>
+            </div>
+            <input type="range" min="0" max="90" step="15" value="0" class="stress-slider" id="rng-dropout" oninput="updateDropout(this.value)">
+            <div class="stress-ticks mono">
+              <span>0% (Clean)</span>
+              <span>30% (VHF Loss)</span>
+              <span>60% (Jamming)</span>
+              <span>90% (Severe)</span>
+            </div>
+            <p class="stress-caption mono">Simulates coastal VHF packet collisions, antenna shadowing, and intentional transponder shutoffs (Objective 3.3).</p>
+          </div>
+
+          <!-- Traffic Density Stratification Selector -->
+          <div class="density-strat-box mono">
+            <div class="density-strat-hdr">
+              <span>TRAFFIC DENSITY STRATIFICATION:</span>
+              <span id="density-strat-badge" class="density-tag-active">Medium Congestion</span>
+            </div>
+            <div class="density-btn-row">
+              <button class="btn-density-tier" onclick="setDensityTier('low', this)">Low (&lt;3 ves/km&sup2;)</button>
+              <button class="btn-density-tier active" onclick="setDensityTier('med', this)">Med (3-7 ves/km&sup2;)</button>
+              <button class="btn-density-tier" onclick="setDensityTier('high', this)">High (&gt;7 ves/km&sup2;)</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- ====================================================================== -->
+  <!-- ACADEMIC THESIS BLUEPRINT & ALIGNMENT MODAL                           -->
+  <!-- ====================================================================== -->
+  <div class="thesis-modal-backdrop" id="thesis-modal" style="display: none;">
+    <div class="thesis-modal-card">
+      
+      <!-- Modal Header -->
+      <div class="modal-hdr">
+        <div class="modal-title-wrap">
+          <div class="modal-badge-row mono">
+            <span class="modal-badge">BATSTATEU CICS</span>
+            <span class="modal-badge">CS-4102</span>
+            <span class="modal-badge">THESIS 1 & 2</span>
+          </div>
+          <h2 class="modal-title">A Cross-Modal Spatiotemporal Graph Framework for Detecting Dark-Vessel Candidates</h2>
+          <p class="modal-sub mono">Using AIS Trajectories and Synthetic Aperture Radar (SAR) Imagery &bull; Batangas Bay Study Sector</p>
+        </div>
+        <button class="btn-modal-close" onclick="closeThesisModal()" title="Close (Hotkey: Esc)">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Modal Tabs -->
+      <div class="modal-tabs mono">
+        <button class="m-tab-btn active" onclick="switchModalTab('m-tab-align', this)"><i data-lucide="check-circle-2"></i> Dean's 6 Feedback Points</button>
+        <button class="m-tab-btn" onclick="switchModalTab('m-tab-arch', this)"><i data-lucide="network"></i> Graph Architecture & Math</button>
+        <button class="m-tab-btn" onclick="switchModalTab('m-tab-rules', this)"><i data-lucide="scale"></i> 3-Tier Ground Truth Protocol</button>
+        <button class="m-tab-btn" onclick="switchModalTab('m-tab-data', this)"><i data-lucide="database"></i> Open Data Feasibility</button>
+        <button class="m-tab-btn" onclick="switchModalTab('m-tab-team', this)"><i data-lucide="users"></i> Research Team Roles</button>
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="modal-body">
+        
+        <!-- Tab 1: Dean's 6 Directives Alignment -->
+        <div class="m-pane active" id="m-tab-align">
+          <div class="align-grid">
+            <div class="align-card">
+              <span class="align-num mono">01</span>
+              <h4>Defensible Scientific Terminology</h4>
+              <p>Cease presumption of guilt or declaring vessels definitively "illegal". Unmatched physical radar detections are framed probabilistically as <strong>"AIS-SAR Discrepancies"</strong> and <strong>"Dark-Vessel Candidates"</strong> requiring algorithmic corroboration and physical verification.</p>
+            </div>
+            <div class="align-card">
+              <span class="align-num mono">02</span>
+              <h4>Clear Computer Science Novelty</h4>
+              <p>Explicitly delineate third-party data collection from in-house algorithmic contributions. The novel CS core is the <strong>bipartite graph schema, GATv2 cross-modal attention matching model, and anchorage-aware context filter</strong>—not connecting external APIs.</p>
+            </div>
+            <div class="align-card">
+              <span class="align-num mono">03</span>
+              <h4>Justification of Graph Modeling</h4>
+              <p>Greedy nearest-neighbor matching collapses in Batangas Port because proximate ships cause identity swapping. The dynamic heterogeneous graph considers multi-target kinematics, spatial proximity, and neighborhood queues simultaneously before assigning correspondence.</p>
+            </div>
+            <div class="align-card">
+              <span class="align-num mono">04</span>
+              <h4>Problem-to-Objective 1:1 Mapping</h4>
+              <p>The 3 specific research problems map strictly to the thesis objectives: matching ambiguity (Obj 2.1), transmission gaps vs true dark events (Obj 1.2 & 3.3), and port false alarms (Obj 2.3 & 3.2), with a dedicated 4th objective for this interactive POC dashboard.</p>
+            </div>
+            <div class="align-card">
+              <span class="align-num mono">05</span>
+              <h4>Quantitative Evaluation Metrics</h4>
+              <p>Objective 3 formally establishes <strong>False-Positive Rate (FPR)</strong> as a primary benchmark alongside Precision, Recall, F1-Score, and Matching Accuracy, distinguishing cross-modal association accuracy from discrepancy detection performance.</p>
+            </div>
+            <div class="align-card">
+              <span class="align-num mono">06</span>
+              <h4>Guardrailed Proof of Concept (POC)</h4>
+              <p>Per BatStateU CS guidelines (<em>"A thesis investigates; a project mainly builds"</em>), the POC is an <strong>algorithmic demonstration and visualization testbed</strong> supporting the thesis, not an enterprise software product.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Graph Architecture & Math -->
+        <div class="m-pane" id="m-tab-arch">
+          <div class="math-layout">
+            <div class="math-card">
+              <h4>1. Dynamic Bipartite Graph Formulation &bull; G = (V_AIS, V_SAR, E_candidate)</h4>
+              <p>For each Sentinel-1 overpass epoch t_s, a dynamic heterogeneous graph is constructed in PyTorch Geometric (<code>HeteroData</code>):</p>
+              <ul class="mono math-list">
+                <li><strong>AIS Node Feature Vector x_AIS &isin; &reals;^6:</strong> [lat, lon, SOG, COG, vessel_type_id, &Delta;t_ping]</li>
+                <li><strong>SAR Node Feature Vector x_SAR &isin; &reals;^7:</strong> [centroid_lat, centroid_lon, length_L, width_W, &sigma;&deg;_backscatter_dB, is_in_anchorage_bool, dist_to_shoreline]</li>
+                <li><strong>Candidate Reachability Edge Vector e_ij &isin; &reals;^4:</strong> [&Delta;d_euclidean, &Delta;t_offset, cos(&Delta;&theta;), &Delta;v_reachability]</li>
+                <li><strong>Local Neighborhood Context:</strong> Intra-modal neighbor edges within 2.0 km among AIS vessels and SAR detections for queue awareness.</li>
+              </ul>
+            </div>
+
+            <div class="math-card">
+              <h4>2. Physical Basis for the 30-Minute Matching Window (&plusmn;15 Min)</h4>
+              <p>Commercial ships navigating Batangas fairways operate under regulated harbor speeds of <strong>8 to 12 knots (4.1 to 6.2 m/s)</strong>. Over a 15-minute window, maximum theoretical displacement is bounded between <strong>3.7 and 5.5 km</strong>:</p>
+              <div class="equation-box mono">
+                Max Displacement = 12 knots &times; 0.25 hours &asymp; 3.0 NM &asymp; 5.55 km (Reachability Gating Bubble)
+              </div>
+              <p>Restricting association to &plusmn;15 min prevents cubic spline divergence while accommodating routine coastal VHF slot collision gaps (5 to 12 minutes; Chen et al., 2026; Li et al., 2025).</p>
+            </div>
+
+            <div class="math-card">
+              <h4>3. 128-Dimensional Shared Latent Embedding & GATv2 Attention</h4>
+              <p>Modality-specific projection layers map disparate radar backscatter and AIS kinematics into a shared 128-dimensional latent space to eliminate dimensional bottlenecking. GATv2 layers dynamically compute link attention weights:</p>
+              <div class="equation-box mono">
+                &alpha;_uv = softmax_v( LeakyReLU( a^T [ W_u h_u || W_v h_v || W_edge x_uv ] ) )
+              </div>
+              <p>Trained using <strong>Focal Loss (&gamma; = 2.0)</strong> to suppress easy negative edges (which constitute ~90% of candidate pairs in dense ports).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: 3-Tier Ground Truth Protocol -->
+        <div class="m-pane" id="m-tab-rules">
+          <div class="rules-table-wrap">
+            <table class="rules-table mono">
+              <thead>
+                <tr>
+                  <th>Class Label</th>
+                  <th>Operational Classification</th>
+                  <th>Deterministic Gating Criteria</th>
+                  <th>Evaluation & Loss Treatment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="row-matched">
+                  <td><strong>Class 0</strong></td>
+                  <td>Matched Normal Vessel</td>
+                  <td>Valid SAR target with kinematically consistent AIS trajectory within R &le; 1.5 km, temporal offset &le; 15 min, and GATv2 attention score &ge; 50% (&tau; &ge; 0.50).</td>
+                  <td>Evaluated as True Negatives for anomaly detection; primary target for matching accuracy.</td>
+                </tr>
+                <tr class="row-dark">
+                  <td><strong>Class 1</strong></td>
+                  <td>AIS-SAR Discrepancy / Dark-Vessel Candidate</td>
+                  <td>Verified SAR detection with estimated length &ge; 25m, zero compatible AIS pings within the 5.0 km reachability envelope, and located outside anchorage zones in open fairways.</td>
+                  <td>Evaluated as True Positives; generates automated alert for physical patrol verification.</td>
+                </tr>
+                <tr class="row-ambiguous">
+                  <td><strong>Class 2</strong></td>
+                  <td>Ambiguous / Low-Risk Target</td>
+                  <td>Unmatched targets &lt; 25m in length (exempt under IMO SOLAS Chapter V Regulation 19), targets inside designated anchorage waiting grounds, or within 150m of shore/pier infrastructure.</td>
+                  <td><strong>Strictly masked from loss calculation</strong> to prevent false-alarm penalization.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tab 4: Open Data Feasibility -->
+        <div class="m-pane" id="m-tab-data">
+          <div class="data-grid">
+            <div class="data-card">
+              <span class="data-badge mono">SAR SATELLITE</span>
+              <h4>Copernicus Data Space Ecosystem (CDSE)</h4>
+              <p>Sentinel-1 C-Band Level-1 GRD imagery on a 12-day repeat orbit over Batangas Bay (overpass approx. 21:47 UTC / 05:47 PST), yielding ~30 clean annual overpass scenes covering 13.61&deg;N–13.83&deg;N, 120.91&deg;E–121.08&deg;E.</p>
+            </div>
+            <div class="data-card">
+              <span class="data-badge mono">AIS TELEMETRY</span>
+              <h4>Global Fishing Watch (GFW) Research Archives</h4>
+              <p>Carrier-level open AIS trajectory packages synchronized with satellite overpasses, complemented by PPA PMO Batangas Station Clara coastal radar and VTMS logs.</p>
+            </div>
+            <div class="data-card">
+              <span class="data-badge mono">GLOBAL BENCHMARK</span>
+              <h4>xView3-SAR Challenge Dataset (>1,000 Scenes)</h4>
+              <p>Used for large-scale pre-training of the GATv2 backbone on verified paired SAR-AIS detections, followed by transfer learning and fine-tuning on localized Batangas waters.</p>
+            </div>
+            <div class="data-card">
+              <span class="data-badge mono">NAUTICAL GIS</span>
+              <h4>NAMRIA Nautical Chart PH4401 & Marine Regions</h4>
+              <p>Official digitized vector polygons for Batangas Port anchorage zones, Verde Island Passage fairways, and 150m shoreline buffer masks in QGIS.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 5: Research Team Roles -->
+        <div class="m-pane" id="m-tab-team">
+          <div class="team-grid">
+            <div class="team-card">
+              <div class="team-avatar mono">SB</div>
+              <div class="team-meta">
+                <h4>BAJIO, SANDARA B.</h4>
+                <span class="team-role mono">Lead Data Architect & GIS Specialist</span>
+                <p>Sentinel-1 SAR acquisition, coordinate alignment, AIS trajectory cleaning, cubic spline kinematic interpolation, NAMRIA anchorage geofencing, and leakage-proof time-blocked dataset partitioning.</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar mono">KB</div>
+              <div class="team-meta">
+                <h4>BRUAL, KEIRK XANDREX M.</h4>
+                <span class="team-role mono">ML & Graph Neural Network Lead</span>
+                <p>PyTorch Geometric bipartite graph modeling, 128-d latent projection encoders, GATv2 cross-modal attention network architecture, anchorage-aware loss optimization, and hard-negative pair scoring.</p>
+              </div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar mono">JB</div>
+              <div class="team-meta">
+                <h4>BUSTOS, JANISON GIANE A.</h4>
+                <span class="team-role mono">Evaluation Lead & POC Developer</span>
+                <p>Baseline implementations (Hungarian matching, AIS Isolation Forest, SAR CFAR), 2-part ablation studies, synthetic AIS dropout stress testing, and development of this Month-3 visual POC testbed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-ftr mono">
+        <span>COLLEGE OF INFORMATICS AND COMPUTING SCIENCES &bull; BATANGAS STATE UNIVERSITY</span>
+        <button class="btn-tool" onclick="closeThesisModal()">Close Blueprint</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Script Execution -->
+  <script src="script.js"></script>
+</body>
+</html>

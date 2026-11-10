@@ -1,0 +1,723 @@
+{
+  "total_items": 21,
+  "collections": [],
+  "items": [
+    {
+      "itemID": 51,
+      "key": "FMARATI5",
+      "itemType": "journalArticle",
+      "title": "A comprehensive review of multimodal artificial intelligence techniques in maritime surveillance using AIS, SAR, and optical data fusion",
+      "authors": [
+        "Hanmante, Sejal",
+        "Kolhar, Shrikrishna",
+        "Patil, Shruti"
+      ],
+      "author_citation": "Hanmante, Sejal et al.",
+      "year": "2026",
+      "date": "2026-07-00 07/2026",
+      "publication": "Array",
+      "volume": "30",
+      "issue": "",
+      "pages": "100931",
+      "doi": "10.1016/j.array.2026.100931",
+      "url": "https://linkinghub.elsevier.com/retrieve/pii/S2590005626002547",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [],
+      "dateAdded": "2026-09-24 11:02:55",
+      "dateModified": "2026-09-24 11:02:55"
+    },
+    {
+      "itemID": 43,
+      "key": "HNFL4Y8I",
+      "itemType": "journalArticle",
+      "title": "Vessel trajectory prediction based on spatio-temporal graph convolutional network for complex and crowded sea areas",
+      "authors": [
+        "Wang, Siwen",
+        "Li, Ying",
+        "Xing, Hu",
+        "Zhang, Zhaoyi"
+      ],
+      "author_citation": "Wang, Siwen et al.",
+      "year": "2024",
+      "date": "2024-04-00 04/2024",
+      "publication": "Ocean Engineering",
+      "volume": "298",
+      "issue": "",
+      "pages": "117232",
+      "doi": "10.1016/j.oceaneng.2024.117232",
+      "url": "https://linkinghub.elsevier.com/retrieve/pii/S0029801824005699",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [],
+      "dateAdded": "2026-09-24 07:52:48",
+      "dateModified": "2026-09-24 07:52:48"
+    },
+    {
+      "itemID": 35,
+      "key": "DVHQMUIR",
+      "itemType": "webpage",
+      "title": "Fine-Grained Spaceborne SAR Ship Classification into Nine Categories via AIS Association",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://www.mdpi.com/2072-4292/18/13/2223",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 37,
+          "key": "7BEJIJCE",
+          "contentType": "text/html",
+          "path_raw": "storage:2223.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\7BEJIJCE\\2223.html",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-23 00:10:42",
+      "dateModified": "2026-09-23 00:10:42"
+    },
+    {
+      "itemID": 36,
+      "key": "LNBXZP3J",
+      "itemType": "journalArticle",
+      "title": "Ship velocity estimation in SAR images using multitask deep learning",
+      "authors": [
+        "Heiselberg, Peder",
+        "Sørensen, Kristian",
+        "Heiselberg, Henning"
+      ],
+      "author_citation": "Heiselberg, Peder et al.",
+      "year": "2023",
+      "date": "2023-04-01 2023-04-01",
+      "publication": "Remote Sensing of Environment",
+      "volume": "288",
+      "issue": "",
+      "pages": "113492",
+      "doi": "10.1016/j.rse.2023.113492",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0034425723000433",
+      "abstract": "SAR satellites are used for monitoring ships worldwide. Moving ships are Doppler shifted by an amount proportional to their velocity. An offset between the ship and its wake is then produced during SAR processing. We present a novel automatic method for calculating the ship velocity. The method relies on multitask deep learning to estimate the offset and ship heading. From these parameters, the ship velocity can be obtained. A convolutional neural network is trained using a coupled loss function. The loss function allows both parameters to be estimated at the same time. We show the methods’ effectiveness for ships in Sentinel-1 SAR images. For this purpose, a large dataset of 30,000 AIS annotated SAR ship images is collected. These images have 20 × 22 m pixel resolution and ships do not have a clear wake. The AIS provides the true ship velocity and allows the method to be evaluated. As a result, we can determine the ship speed with an accuracy of 1.1 m/s. The offset disappears near the azimuth direction of the SAR image. Yet, our method is reliable except for ships sailing within 2.5 degrees of the azimuth direction.",
+      "tags": [
+        "Azimuth offset",
+        "CNN",
+        "Convolutional neural network",
+        "Course",
+        "Deep learning",
+        "Doppler offset",
+        "Heading",
+        "Multitask learning",
+        "Remote sensing",
+        "SAR",
+        "Ship",
+        "Synthetic Aperture Radar",
+        "Velocity"
+      ],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 39,
+          "key": "F94NVR52",
+          "contentType": "application/pdf",
+          "path_raw": "storage:Heiselberg et al. - 2023 - Ship velocity estimation in SAR images using multitask deep learning.pdf",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\F94NVR52\\Heiselberg et al. - 2023 - Ship velocity estimation in SAR images using multitask deep learning.pdf",
+          "exists_on_disk": true
+        },
+        {
+          "attachmentItemID": 38,
+          "key": "T55NE9HX",
+          "contentType": "text/html",
+          "path_raw": "storage:S0034425723000433.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\T55NE9HX\\S0034425723000433.html",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-22 23:49:44",
+      "dateModified": "2026-09-22 23:49:44"
+    },
+    {
+      "itemID": 33,
+      "key": "HVA535K2",
+      "itemType": "journalArticle",
+      "title": "Multimodal Physics-Informed Graph Neural Diffusion for Edge Detection of AIS-Dark Illegal Fishing Vessels",
+      "authors": [
+        "Ebenezar, U. Samson",
+        "Karthikeyan, L.",
+        "Velmurugan, J.",
+        "Vishnukumar, A."
+      ],
+      "author_citation": "Ebenezar, U. Samson et al.",
+      "year": "2026",
+      "date": "2026-00-00 2026",
+      "publication": "Procedia Computer Science",
+      "volume": "283",
+      "issue": "",
+      "pages": "604-612",
+      "doi": "10.1016/j.procs.2026.06.143",
+      "url": "https://linkinghub.elsevier.com/retrieve/pii/S1877050926017746",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 34,
+          "key": "3XQ72QG2",
+          "contentType": "application/pdf",
+          "path_raw": "storage:Ebenezar et al. - 2026 - Multimodal Physics-Informed Graph Neural Diffusion for Edge Detection of AIS-Dark Illegal Fishing Ve.pdf",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\3XQ72QG2\\Ebenezar et al. - 2026 - Multimodal Physics-Informed Graph Neural Diffusion for Edge Detection of AIS-Dark Illegal Fishing Ve.pdf",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-21 09:54:54",
+      "dateModified": "2026-09-21 09:54:54"
+    },
+    {
+      "itemID": 30,
+      "key": "Q3MX8QG6",
+      "itemType": "journalArticle",
+      "title": "Automated Monitoring in Maritime Video Surveillance System",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [],
+      "dateAdded": "2026-09-21 09:53:12",
+      "dateModified": "2026-09-21 09:53:16"
+    },
+    {
+      "itemID": 1,
+      "key": "9EWK7A4K",
+      "itemType": "webpage",
+      "title": "A Visual Analysis Approach to Understand and Explore Quality Problems of AIS Data",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://www.mdpi.com/2077-1312/9/2/198?utm_source=chatgpt.com",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 16,
+          "key": "S4HLACI6",
+          "contentType": "text/html",
+          "path_raw": "storage:198.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\S4HLACI6\\198.html",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-18 01:29:01",
+      "dateModified": "2026-09-18 01:29:01"
+    },
+    {
+      "itemID": 2,
+      "key": "ESFQKCK4",
+      "itemType": "journalArticle",
+      "title": "Hot spots of unseen fishing vessels",
+      "authors": [
+        "Welch, Heather",
+        "Clavelle, Tyler",
+        "White, Timothy D.",
+        "Cimino, Megan A.",
+        "Van Osdel, Jennifer",
+        "Hochberg, Timothy",
+        "Kroodsma, David",
+        "Hazen, Elliott L."
+      ],
+      "author_citation": "Welch, Heather et al.",
+      "year": "2022",
+      "date": "2022-11-02 2022-11-02",
+      "publication": "Science Advances",
+      "volume": "8",
+      "issue": "44",
+      "pages": "eabq2109",
+      "doi": "10.1126/sciadv.abq2109",
+      "url": "https://www.science.org/doi/10.1126/sciadv.abq2109",
+      "abstract": "Illegal, unreported, and unregulated (IUU) fishing incurs an annual cost of up to US$25 billion in economic losses, results in substantial losses of aquatic life, and has been linked to human rights violations. Vessel tracking data from the automatic identification system (AIS) are powerful tools for combating IUU, yet AIS transponders can be disabled, reducing its efficacy as a surveillance tool. We present a global dataset of AIS disabling in commercial fisheries, which obscures up to 6% (>4.9 M hours) of vessel activity. Disabling hot spots were located near the exclusive economic zones (EEZs) of Argentina and West African nations and in the Northwest Pacific, all regions of IUU concern. Disabling was highest near transshipment hot spots and near EEZ boundaries, particularly contested ones. We also found links between disabling and location hiding from competitors and pirates. These inferences on where and why activities are obscured provide valuable information to improve fisheries management.",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 17,
+          "key": "3CSRLT9S",
+          "contentType": "application/pdf",
+          "path_raw": "storage:Welch et al. - 2022 - Hot spots of unseen fishing vessels.pdf",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\3CSRLT9S\\Welch et al. - 2022 - Hot spots of unseen fishing vessels.pdf",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-18 01:24:22",
+      "dateModified": "2026-09-18 01:24:22"
+    },
+    {
+      "itemID": 3,
+      "key": "Z9KCTDPH",
+      "itemType": "webpage",
+      "title": "What is AIS tracking? A SeaLight primer",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://sealight.live/posts/what-is-ais-tracking-a-sea-light-primer",
+      "abstract": "This post explains how the AIS vessel tracking system works and how bad actors abuse the system.",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 18,
+          "key": "P2HV92HA",
+          "contentType": "text/html",
+          "path_raw": "storage:what-is-ais-tracking-a-sea-light-primer.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\P2HV92HA\\what-is-ais-tracking-a-sea-light-primer.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:16",
+      "dateModified": "2026-09-18 01:13:16"
+    },
+    {
+      "itemID": 4,
+      "key": "ASMDEDPV",
+      "itemType": "webpage",
+      "title": "Vessel Trajectory Data Mining: A Review | IEEE Journals & Magazine | IEEE Xplore",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://ieeexplore.ieee.org/document/10824766",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 19,
+          "key": "CIFH6TUG",
+          "contentType": "text/html",
+          "path_raw": "storage:10824766.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\CIFH6TUG\\10824766.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:14",
+      "dateModified": "2026-09-18 01:13:14"
+    },
+    {
+      "itemID": 5,
+      "key": "RF6KEWDB",
+      "itemType": "journalArticle",
+      "title": "Trajectory prediction of seagoing ships in dynamic traffic scenes via a gated spatio-temporal graph aggregation network",
+      "authors": [
+        "Zhang, Xiliang",
+        "Liu, Jin",
+        "Gong, Peizhu",
+        "Chen, Chengcheng",
+        "Han, Bing",
+        "Wu, Zhongdai"
+      ],
+      "author_citation": "Zhang, Xiliang et al.",
+      "year": "2023",
+      "date": "2023-11-01 2023-11-01",
+      "publication": "Ocean Engineering",
+      "volume": "287",
+      "issue": "",
+      "pages": "115886",
+      "doi": "10.1016/j.oceaneng.2023.115886",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0029801823022709",
+      "abstract": "Accurate ship trajectory prediction is essential in maritime traffic control and safety, requiring the consideration of complex spatial and temporal dependencies within trajectory data. Most existing studies employ GNN and RNN to tackle this issue. However, (1) GNN-based approaches heavily rely on predefined graph structures to capture the static properties of ships, overlooking the dynamic interactions between them. (2) RNN-based strategies fail to capture long-term temporal dependencies. Also, the complex recursive architectures impede their ability to model local (short-term) temporal dependencies, leading to inefficient inference. To address the aforementioned challenges, this paper presents a novel Gated Spatio-Temporal Graph Aggregation Network (G-STGAN) for ship trajectory prediction, which comprises several key components. Firstly, a ship spatial gating encoder (SSGE) combines graph convolutional networks (GCN) and transformers to simulate dynamic and static spatial interactions, thereby improving prediction performance. Additionally, we design a ship temporal gating encoder (STGE), which utilizes a gated transformer (GT) and temporal convolution (TC) to capture both short- and long-term temporal dependencies. Ultimately, the spatial and temporal features obtained from the SSGE and STGE modules, respectively, are aggregated through a temporal convolutional network (TCN) to perform downstream trajectory prediction tasks. Experimental evaluations on three real-world Automatic Identification System (AIS) datasets demonstrate that G-STGAN achieves competitive prediction performance in terms of accuracy and robustness.",
+      "tags": [
+        "Automatic identification system (AIS)",
+        "Graph convolution network",
+        "Long-short term dependency",
+        "Ship trajectory prediction",
+        "Spatio-temporal features",
+        "Temporal gated network"
+      ],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 20,
+          "key": "W4P665KB",
+          "contentType": "text/html",
+          "path_raw": "storage:S0029801823022709.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\W4P665KB\\S0029801823022709.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:12",
+      "dateModified": "2026-09-18 01:13:12"
+    },
+    {
+      "itemID": 6,
+      "key": "UZK78BRJ",
+      "itemType": "webpage",
+      "title": "Port congestion: A guide to measurement, impact & management Port congestion: A guide to measurement, impact, and management | Kpler - Nov 25, 2025",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://www.kpler.com/blog/port-congestion-guide-measurement-causes-impact",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 21,
+          "key": "FXQCAR2J",
+          "contentType": "text/html",
+          "path_raw": "storage:port-congestion-guide-measurement-causes-impact.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\FXQCAR2J\\port-congestion-guide-measurement-causes-impact.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:09",
+      "dateModified": "2026-09-18 01:13:09"
+    },
+    {
+      "itemID": 7,
+      "key": "DZVQPIZ5",
+      "itemType": "webpage",
+      "title": "Maritime Domain Awareness",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://www.imo.org/en/ourwork/security/pages/maritime-domain-awareness.aspx",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 22,
+          "key": "D9RVH6TT",
+          "contentType": "text/html",
+          "path_raw": "storage:maritime-domain-awareness.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\D9RVH6TT\\maritime-domain-awareness.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:07",
+      "dateModified": "2026-09-18 01:13:07"
+    },
+    {
+      "itemID": 8,
+      "key": "XVSGA2Z8",
+      "itemType": "webpage",
+      "title": "Hot spots of unseen fishing vessels | Science Advances",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://www.science.org/doi/10.1126/sciadv.abq2109?referrer=https%3A%2F%2Fwww.science.org%2Fdoi%2F10.1126%2Fsciadv.abq2109%3Freferrer%3Dhttps%253A%252F%252Fwww.google.com%252F",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 23,
+          "key": "WWIBHHZF",
+          "contentType": "text/html",
+          "path_raw": "storage:sciadv.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\WWIBHHZF\\sciadv.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:06",
+      "dateModified": "2026-09-18 01:13:06"
+    },
+    {
+      "itemID": 9,
+      "key": "664Q7KMG",
+      "itemType": "webpage",
+      "title": "Data Insights | UNCTAD Data Hub",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://unctadstat.unctad.org/insights/theme/107",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 24,
+          "key": "MQG8E5PV",
+          "contentType": "text/html",
+          "path_raw": "storage:107.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\MQG8E5PV\\107.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:03",
+      "dateModified": "2026-09-18 01:13:03"
+    },
+    {
+      "itemID": 10,
+      "key": "9NCC6FZT",
+      "itemType": "journalArticle",
+      "title": "Dark Ship Detection via Optical and SAR Collaboration: An Improved Multi-Feature Association Method Between Remote Sensing Images and AIS Data",
+      "authors": [
+        "Li, Fan",
+        "Yu, Kun",
+        "Yuan, Chao",
+        "Tian, Yichen",
+        "Yang, Guang",
+        "Yin, Kai",
+        "Li, Youguang"
+      ],
+      "author_citation": "Li, Fan et al.",
+      "year": "2025",
+      "date": "2025-01-00 2025/1",
+      "publication": "Remote Sensing",
+      "volume": "17",
+      "issue": "13",
+      "pages": "2201",
+      "doi": "10.3390/rs17132201",
+      "url": "https://www.mdpi.com/2072-4292/17/13/2201",
+      "abstract": "Dark ships, vessels deliberately disabling their AIS signals, constitute a grave maritime safety hazard, with detection efforts hindered by issues like over-reliance on AIS, inadequate surveillance coverage, and significant mismatch rates. This paper proposes an improved multi-feature association method that integrates satellite remote sensing and AIS data, with a focus on oriented bounding box course estimation, to improve the detection of dark ships and enhance maritime surveillance. Firstly, the oriented bounding box object detection model (YOLOv11n-OBB) is trained to break through the limitations of horizontal bounding box orientation representation. Secondly, by integrating position, dimensions (length and width), and course characteristics, we devise a joint cost function to evaluate the combined significance of multiple features. Subsequently, an advanced JVC global optimization algorithm is employed to ensure high-precision association in dense scenes. Finally, by integrating data from Gaofen-6 (optical) and Gaofen-3B (SAR) satellites, a day-and-night collaborative monitoring framework is constructed to address the blind spots of single-sensor monitoring during night-time or adverse weather conditions. Our results indicate that the detection model demonstrates a high average precision (AP50) of 0.986 on the optical dataset and 0.903 on the SAR dataset. The association accuracy of the multi-feature association algorithm is 91.74% in optical image and AIS data matching, and 91.33% in SAR image and AIS data matching. The association rate reaches 96.03% (optical) and 74.24% (SAR), respectively. This study provides an efficient technical tool for maritime safety regulation through multi-source data fusion and algorithm innovation.",
+      "tags": [
+        "AIS",
+        "dark ship",
+        "data association",
+        "optical remote sensing",
+        "SAR",
+        "ship detection"
+      ],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 25,
+          "key": "8JFH22BC",
+          "contentType": "application/pdf",
+          "path_raw": "storage:Li et al. - 2025 - Dark Ship Detection via Optical and SAR Collaboration An Improved Multi-Feature Association Method.pdf",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\8JFH22BC\\Li et al. - 2025 - Dark Ship Detection via Optical and SAR Collaboration An Improved Multi-Feature Association Method.pdf",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-18 01:13:01",
+      "dateModified": "2026-09-18 01:13:01"
+    },
+    {
+      "itemID": 11,
+      "key": "7VN2IK4V",
+      "itemType": "conferencePaper",
+      "title": "Automated Monitoring in Maritime Video Surveillance System",
+      "authors": [
+        "Nalamati, Mrunalini",
+        "Sharma, Nabin",
+        "Saqib, Muhammad",
+        "Blumenstein, Michael"
+      ],
+      "author_citation": "Nalamati, Mrunalini et al.",
+      "year": "2020",
+      "date": "2020-11-25 2020-11-25",
+      "publication": "2020 35th International Conference on Image and Vision Computing New Zealand (IVCNZ)",
+      "volume": "",
+      "issue": "",
+      "pages": "1-6",
+      "doi": "10.1109/IVCNZ51579.2020.9290533",
+      "url": "https://ieeexplore.ieee.org/document/9290533/",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [],
+      "dateAdded": "2026-09-18 01:12:59",
+      "dateModified": "2026-09-18 01:12:59"
+    },
+    {
+      "itemID": 12,
+      "key": "WKBPKNX7",
+      "itemType": "preprint",
+      "title": "AIS Data-Driven Maritime Monitoring Based on Transformer: A Comprehensive Review",
+      "authors": [
+        "Xie, Zhiye",
+        "Tu, Enmei",
+        "Fu, Xianping",
+        "Yuan, Guoliang",
+        "Han, Yi"
+      ],
+      "author_citation": "Xie, Zhiye et al.",
+      "year": "2025",
+      "date": "2025-05-12 2025-05-12",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "10.48550/arXiv.2505.07374",
+      "url": "http://arxiv.org/abs/2505.07374",
+      "abstract": "With the increasing demands for safety, efficiency, and sustainability in global shipping, Automatic Identification System (AIS) data plays an increasingly important role in maritime monitoring. AIS data contains spatial-temporal variation patterns of vessels that hold significant research value in the marine domain. However, due to its massive scale, the full potential of AIS data has long remained untapped. With its powerful sequence modeling capabilities, particularly its ability to capture long-range dependencies and complex temporal dynamics, the Transformer model has emerged as an effective tool for processing AIS data. Therefore, this paper reviews the research on Transformer-based AIS data-driven maritime monitoring, providing a comprehensive overview of the current applications of Transformer models in the marine field. The focus is on Transformer-based trajectory prediction methods, behavior detection, and prediction techniques. Additionally, this paper collects and organizes publicly available AIS datasets from the reviewed papers, performing data filtering, cleaning, and statistical analysis. The statistical results reveal the operational characteristics of different vessel types, providing data support for further research on maritime monitoring tasks. Finally, we offer valuable suggestions for future research, identifying two promising research directions. Datasets are available at https://github.com/eyesofworld/Maritime-Monitoring.",
+      "tags": [
+        "Computer Science - Artificial Intelligence",
+        "Computer Science - Machine Learning"
+      ],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 27,
+          "key": "IPKDR8B3",
+          "contentType": "text/html",
+          "path_raw": "storage:2505.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\IPKDR8B3\\2505.html",
+          "exists_on_disk": false
+        },
+        {
+          "attachmentItemID": 26,
+          "key": "QKMJFVG6",
+          "contentType": "application/pdf",
+          "path_raw": "storage:Xie et al. - 2025 - AIS Data-Driven Maritime Monitoring Based on Transformer A Comprehensive Review.pdf",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\QKMJFVG6\\Xie et al. - 2025 - AIS Data-Driven Maritime Monitoring Based on Transformer A Comprehensive Review.pdf",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-18 01:12:57",
+      "dateModified": "2026-09-18 01:12:57"
+    },
+    {
+      "itemID": 13,
+      "key": "8QKR8VIW",
+      "itemType": "webpage",
+      "title": "A Visual Analysis Approach to Understand and Explore Quality Problems of AIS Data",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://www.mdpi.com/2077-1312/9/2/198",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 28,
+          "key": "MNJ6V9FU",
+          "contentType": "text/html",
+          "path_raw": "storage:198.html",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\MNJ6V9FU\\198.html",
+          "exists_on_disk": false
+        }
+      ],
+      "dateAdded": "2026-09-18 01:12:55",
+      "dateModified": "2026-09-18 01:12:55"
+    },
+    {
+      "itemID": 14,
+      "key": "6BERIIJB",
+      "itemType": "webpage",
+      "title": "A Hybrid Framework for Maritime Surveillance: Detecting Illegal Activities through Vessel Behaviors and Expert Rules Fusion",
+      "authors": [],
+      "author_citation": "No Author",
+      "year": "n.d.",
+      "date": "",
+      "publication": "",
+      "volume": "",
+      "issue": "",
+      "pages": "",
+      "doi": "",
+      "url": "https://www.mdpi.com/1424-8220/24/17/5623",
+      "abstract": "",
+      "tags": [],
+      "collections": [],
+      "attachments": [],
+      "dateAdded": "2026-09-18 01:12:52",
+      "dateModified": "2026-09-18 01:12:52"
+    },
+    {
+      "itemID": 15,
+      "key": "RIW8ENBQ",
+      "itemType": "journalArticle",
+      "title": "A Hybrid Framework for Maritime Surveillance: Detecting Illegal Activities through Vessel Behaviors and Expert Rules Fusion",
+      "authors": [
+        "do Nascimento, Vinicius D.",
+        "Alves, Tiago A. O.",
+        "de Farias, Claudio M.",
+        "Dutra, Diego Leonel Cadette"
+      ],
+      "author_citation": "do Nascimento, Vinicius D. et al.",
+      "year": "2024",
+      "date": "2024-01-00 2024/1",
+      "publication": "Sensors",
+      "volume": "24",
+      "issue": "17",
+      "pages": "5623",
+      "doi": "10.3390/s24175623",
+      "url": "https://www.mdpi.com/1424-8220/24/17/5623",
+      "abstract": "Maritime traffic is essential for global trade but faces significant challenges, including navigation safety, environmental protection, and the prevention of illicit activities. This work presents a framework for detecting illegal activities carried out by vessels, combining navigation behavior detection models with rules based on expert knowledge. Using synthetic and real datasets based on the Automatic Identification System (AIS), we structured our framework into five levels based on the Joint Directors of Laboratories (JDL) model, efficiently integrating data from multiple sources. Activities are classified into four categories: illegal fishing, suspicious activity, anomalous activity, and normal activity. To address the issue of a lack of labels and integrate data-driven detection with expert knowledge, we employed a stack ensemble model along with active learning. The results showed that the framework was highly effective, achieving 99% accuracy in detecting illegal fishing and 92% in detecting suspicious activities. Furthermore, it drastically reduced the need for manual checks by specialists, transforming experts’ tacit knowledge into explicit knowledge through the models and allowing continuous updates of maritime domain rules. This work significantly contributes to maritime surveillance, offering a scalable and efficient solution for detecting illegal activities in the maritime domain.",
+      "tags": [
+        "active learning",
+        "expert knowledge integration",
+        "illegal activities detection",
+        "maritime surveillance",
+        "navigation behavior models"
+      ],
+      "collections": [],
+      "attachments": [
+        {
+          "attachmentItemID": 29,
+          "key": "EHHTBBRP",
+          "contentType": "application/pdf",
+          "path_raw": "storage:do Nascimento et al. - 2024 - A Hybrid Framework for Maritime Surveillance Detecting Illegal Activities through Vessel Behaviors.pdf",
+          "resolved_path": "C:\\Users\\Drexsy\\Zotero\\storage\\EHHTBBRP\\do Nascimento et al. - 2024 - A Hybrid Framework for Maritime Surveillance Detecting Illegal Activities through Vessel Behaviors.pdf",
+          "exists_on_disk": true
+        }
+      ],
+      "dateAdded": "2026-09-18 01:12:50",
+      "dateModified": "2026-09-18 01:12:50"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+References
+
+do Nascimento, V. D., Alves, T. A. O., de Farias, C. M., & Dutra, D. L. C. (2024). A hybrid framework for maritime surveillance: Detecting illegal activities through vessel behaviors and expert rules fusion. Sensors, 24(17), 5623. https://doi.org/10.3390/s24175623
+
+Hanmante, S., Kolhar, S., & Patil, S. (2026). A comprehensive review of multimodal artificial intelligence techniques in maritime surveillance using AIS, SAR, and optical data fusion. Array, 30, 100931. https://doi.org/10.1016/j.array.2026.100931
+
+Li, F., Yu, K., Yuan, C., Tian, Y., Yang, G., Yin, K., & Li, Y. (2025). Dark ship detection via optical and SAR collaboration: An Improved Multi-Feature Association Method Between Remote Sensing Images and AIS Data. Remote Sensing, 17(13), 2201. https://doi.org/10.3390/rs17132201
+
+Xue, W., Ai, J., Zhu, Y., & Zhuang, S. (2026). AMFNet: An asymmetric multi-modal fusion network for salient ship detection using SAR imagery and AIS data. Marine Geodesy, 49(4), 697–730. https://doi.org/10.1080/01490419.2026.2664432
+
+Zhang, X., Liu, J., Gong, P., Chen, C., Han, B., & Wu, Z. (2023). Trajectory prediction of seagoing ships in dynamic traffic scenes via a gated spatio-temporal graph aggregation network. Ocean Engineering, 287, 115886. https://doi.org/10.1016/j.oceaneng.2023.115886

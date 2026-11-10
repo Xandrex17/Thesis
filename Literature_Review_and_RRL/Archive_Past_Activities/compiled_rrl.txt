@@ -1,0 +1,58 @@
+Related Published Studies (Original Studies)
+
+● Forti, N., et al. (2022). Maritime anomaly detection and trajectory prediction using deep learning. IEEE Transactions on Intelligent Transportation Systems, 23(12), 22615-22627. Demonstrates the use of deep sequence models to learn normal maritime traffic patterns and flag deviations.
+https://www.researchgate.net/publication/351943244_Maritime_Anomaly_Detection_in_a_Real-World_Scenario_Ever_Given_Grounding_in_the_Suez_Canal
+
+● Li, F., et al. (2025). Dark ship detection via optical and SAR collaboration: An improved multi-feature association method between remote sensing images and AIS data. Remote Sensing, 17(13), 2201.
+https://www.researchgate.net/publication/393079272_Dark_Ship_Detection_via_Optical_and_SAR_Collaboration_An_Improved_Multi-Feature_Association_Method_Between_Remote_Sensing_Images_and_AIS_Data
+
+● Zhang, X., et al. (2023). Trajectory prediction of seagoing ships in dynamic traffic scenes via a gated spatio-temporal graph aggregation network. Ocean Engineering, 287, 115886. Demonstrates the application of advanced graph-based network structures to model complex, dynamic spatial and temporal interactions among vessels in congested marine environments.
+https://www.sciencedirect.com/science/article/abs/pii/S0029801823022709
+
+● Eljabu, L., et al. (2021). Anomaly detection in maritime domain based on spatio-temporal analysis of AIS data using graph neural networks. Proceedings of the 2021 5th International Conference on Vision, Image and Signal Processing (ICVISP), 142–147. Formulates maritime trajectory anomaly detection by representing vessel movements as time-dependent directed graphs, utilizing Graph Convolutional Networks to capture spatial relationships and flag abnormal vessel movements.
+https://www.researchgate.net/publication/358449332_Anomaly_Detection_in_Maritime_Domain_based_on_Spatio-Temporal_Analysis_of_AIS_Data_Using_Graph_Neural_Networks
+
+● Wu, J., et al. (2025). STGVAD: Spatio-Temporal Graph-based Vessel Behavior Anomaly Detection. IEEE Access, 14, 2152–2165. Proposes an advanced graph-based framework utilizing spatio-temporal graph neural networks to jointly model inter-vessel interactions and temporal trajectory dynamics for maritime anomaly detection.
+https://www.researchgate.net/publication/395560748_STGVAD_Spatio-Temporal_Graph-Based_Vessel_Behavior_Anomaly_Detection
+
+
+
+Newly Gathered & Verified Peer-Reviewed Studies
+
+● Song, J., et al. (2026). Single-channel SAR moving target indication using subaperture SAR coherence and target motion phase refocusing. IEEE Transactions on Aerospace and Electronic Systems, 62, 5629–5646. Develops an effective single-channel SAR moving target indication framework that utilizes subaperture coherence and motion phase refocusing to eliminate clutter, estimate vessel velocities, and enhance dark vessel detection.
+https://ieeexplore.ieee.org/document/11370684
+
+● Ebenezar, U. S., et al. (2026). Multimodal physics-informed graph neural diffusion for edge detection of AIS-dark illegal fishing vessels. Procedia Computer Science, 283, 604–612. Proposes a multimodal physics-informed graph neural diffusion framework that models vessel interactions as dynamic graphs to detect AIS-dark vessels by enforcing kinematic constraints across trajectory gaps.
+https://doi.org/10.1016/j.procs.2026.06.143
+
+● Wang, S., et al. (2024). Vessel trajectory prediction based on spatio-temporal graph convolutional network for complex and crowded sea areas. Ocean Engineering, 298, 117232. Proposes a spatio-temporal graph convolutional network framework that models inter-vessel interactions and spatial-temporal dependencies as dynamic graphs to accurately predict vessel trajectories in high-density, congested maritime environments.
+https://www.sciencedirect.com/science/article/abs/pii/S0029801824005699
+
+● Mou, N., et al. (2026). Dynamic interaction graph-driven vessel trajectory anomaly detection in congested waterways. Reliability Engineering & System Safety, 277, 113310. Proposes a dynamic interaction graph framework that models multi-vessel navigational dependencies to accurately detect trajectory anomalies while suppressing false alarms caused by dense traffic and port congestion.
+https://doi.org/10.1016/j.ress.2026.113310
+
+● Heiselberg, P., et al. (2023). Ship velocity estimation in SAR images using multitask deep learning. Remote Sensing of Environment, 288, 113492. Proposes a multitask deep learning framework to simultaneously estimate ship heading and Doppler-induced wake displacement from Sentinel-1 SAR imagery, resolving velocity offsets necessary for accurate spatial correspondence with AIS trajectories.
+https://doi.org/10.1016/j.rse.2023.113492
+
+● Hanmante, S., et al. (2026). A comprehensive review of multimodal artificial intelligence techniques in maritime surveillance using AIS, SAR, and optical data fusion. Array, 30, 100931. Provides a comprehensive review of multimodal artificial intelligence frameworks in maritime surveillance, detailing deep learning architectures and sensor association methods for fusing AIS telemetry with satellite SAR imagery to detect non-broadcasting dark vessels.
+https://doi.org/10.1016/j.array.2026.100931
+
+● He, T., et al. (2026). Satellite remote sensing for fishing vessel identification and monitoring: A comparative analysis of modalities and a review of datasets. Remote Sensing, 18(17), 3000. Provides a PRISMA 2020 systematic review comparing spaceborne SAR, optical, and nighttime light modalities, and evaluates public maritime datasets including xView3-SAR and OpenSARShip for dark vessel surveillance.
+https://doi.org/10.3390/rs18173000
+
+● Xue, W., et al. (2026). AMFNet: an asymmetric multi-modal fusion network for salient ship detection using SAR imagery and AIS data. Marine Geodesy, 49(4), 697-730. Proposes an asymmetric multi-modal fusion network that utilizes ship distribution density information from AIS data to enrich SAR feature representations through learnable prompt adapters, resolving feature redundancy inherent in symmetric fusion architectures.
+https://doi.org/10.1080/01490419.2026.2664432
+
+
+
+Specialized Supporting Studies (Sentinel-1 Resolution & OpenSARShip Benchmarks)
+
+● Bhattacharjee, S., et al. (2024). Attention-guided convolution neural network assisted with handcrafted features for ship classification in low-resolution sentinel-1 sar image data. IEEE Access, 12, 48668–48685. Demonstrates the classification of vessels in 20-meter low-resolution Sentinel-1 SAR imagery by combining attention-guided CNNs with handcrafted morphological and geometric features on OpenSARShip to resolve radar speckle and target ambiguity.
+https://doi.org/10.1109/ACCESS.2024.3382903
+
+● Galdelli, A., et al. (2025). Multimodal AI-enhanced ship detection for mapping fishing vessels and informing on suspicious activities. Pattern Recognition Letters, 191, 15–22. Proposes a multimodal framework combining Sentinel-1 SAR, optical satellite imagery, and AIS matchmaking to enhance small-vessel detection in cluttered marine backgrounds and identify non-broadcasting dark vessels.
+https://doi.org/10.1016/j.patrec.2025.02.022
+
+● Holagh, N. A., & Kobti, Z. (2025). Survey of graph neural network methods for dynamic link prediction. Procedia Computer Science, 257, 436–443. Reviews dynamic link prediction architectures across evolving graphs, establishing the theoretical foundation for applying graph attention networks to model time-varying relationships and resolve edge prediction under sparse data conditions.
+https://doi.org/10.1016/j.procs.2025.03.057
+

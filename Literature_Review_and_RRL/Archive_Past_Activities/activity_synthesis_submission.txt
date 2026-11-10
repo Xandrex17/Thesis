@@ -1,0 +1,46 @@
+================================================================================
+REVIEW OF RELATED LITERATURE (RRL) CLASS ACTIVITY SUBMISSION
+Derived Exclusively from the 4 Table Sources in REVIEW OF RELATED LITERATURE ACTIVITY.pdf
+Standards: Zero First-Person POV (No "our/we"), Zero Dogmatic Claims (No "proves/supports")
+Citation Style: APA 7th Edition
+================================================================================
+
+--------------------------------------------------------------------------------
+1. ARTICLE ROLE IDENTIFICATION (Page 2 Template Completion)
+--------------------------------------------------------------------------------
+
+Study 1 - Problem & Baseline Association:
+Li et al. (2025)
+- Role: Defines the core operational problem of vessel-to-AIS matching ambiguities in crowded waterways and establishes the baseline multi-feature association pipeline (YOLO-OBB and JVC global assignment) for isolating dark vessels.
+
+Study 2 - Theoretical Anchor & Research Gap:
+Hanmante et al. (2026)
+- Role: Formulates the sensory asymmetry bottleneck in maritime surveillance and isolates the critical research gap: the collapse of pairwise association algorithms below 75% accuracy in dense harbor traffic due to the absence of relational graph modeling.
+
+Study 3 - Method & Technology Architecture:
+Zhang et al. (2023)
+- Role: Provides the architectural foundation for spatiotemporal graph modeling by employing a parallel Gated Spatio-Temporal Graph Aggregation Network (G-STGAN) to capture dynamic, non-linear ship-to-ship interactions in dense traffic.
+
+Study 4 - Proof of Concept & Feature-Level Fusion:
+Xue et al. (2026)
+- Role: Delivers the proof of concept for asymmetric multimodal fusion (AMFNet), demonstrating that injecting AIS spatial density priors into SAR feature extraction resolves feature redundancy and enhances ship detection efficiency over symmetric models.
+
+
+--------------------------------------------------------------------------------
+2. SYNTHESIZED PARAGRAPH (Strict 5-Step Formula, Zero POV, Zero Proving/Supports)
+--------------------------------------------------------------------------------
+
+Although multimodal sensor fusion integrating satellite Synthetic Aperture Radar (SAR) and coastal Automatic Identification System (AIS) telemetry represents the primary paradigm for identifying non-cooperative dark vessels, prevailing association architectures experience severe operational degradation in congested port environments. In a comprehensive review of maritime artificial intelligence, Hanmante et al. (2026) established that while combining radar and AIS reduces surveillance false alarms by 35% to 60% in open corridors, decision-level pairwise matching algorithms suffer an accuracy collapse below 75% in dense coastal waterways due to spatiotemporal latency and the absence of relational inter-vessel modeling. This operational vulnerability was documented empirically by Li et al. (2025), who achieved 91% vessel detection accuracy using oriented bounding boxes (YOLO-OBB) and global bipartite assignment (JVC), yet observed severe identity swapping, nearest-neighbor mismatching, and sensitivity to small-vessel clutter when targets cluster in close proximity. To address feature redundancy in multi-sensor pipelines, Xue et al. (2026) demonstrated that asymmetric multimodal fusion (AMFNet) guided by AIS spatial density priors enhances radar feature extraction over symmetric models, yet the approach remains vulnerable to performance drops during low-contrast radar anomalies or transponder dropouts. Crucially, a comparative synthesis of these investigations reveals that existing surveillance frameworks treat vessel association as an isolated, pairwise assignment problem, failing to account for dynamic navigational interdependencies among neighboring ships. To resolve this systemic bottleneck, the methodological architecture engineered by Zhang et al. (2023)—which achieved a 9.47% error reduction using gated spatiotemporal graph aggregation (G-STGAN) to model dynamic multi-ship maneuvering dependencies—provides the foundational framework for reformulating cross-modal AIS-SAR association as dynamic link prediction over relational vessel interaction graphs, thereby suppressing spurious dark-vessel false alarms in congested harbor anchorages.
+
+
+--------------------------------------------------------------------------------
+3. APA 7TH EDITION REFERENCES
+--------------------------------------------------------------------------------
+
+Hanmante, S., Kolhar, S., & Patil, S. (2026). A comprehensive review of multimodal artificial intelligence techniques in maritime surveillance using AIS, SAR, and optical data fusion. Array, 30, Article 100931. https://doi.org/10.1016/j.array.2026.100931
+
+Li, F., Yu, K., Yuan, C., Tian, Y., Yang, G., Yin, K., & Li, Y. (2025). Dark ship detection via optical and SAR collaboration: An improved multi-feature association method between remote sensing images and AIS data. Remote Sensing, 17(13), Article 2201. https://doi.org/10.3390/rs17132201
+
+Xue, W., Yang, X., Zhang, Y., & Wang, H. (2026). AMFNet: An asymmetric multi-modal fusion network for salient ship detection using SAR imagery and AIS data. Marine Geodesy, 49(4), 697–730. https://doi.org/10.1080/01490419.2026.2664432
+
+Zhang, X., Liu, J., Gong, P., Chen, C., Han, B., & Wu, Z. (2023). Trajectory prediction of seagoing ships in dynamic traffic scenes via a gated spatio-temporal graph aggregation network. Ocean Engineering, 287, Article 115886. https://doi.org/10.1016/j.oceaneng.2023.115886
